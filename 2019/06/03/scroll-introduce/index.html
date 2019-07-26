@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<title>scrolls introduce | Eric&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Eric&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Eric&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div id="post-toc" class="post-toc">
+            <span class="post-toc-title">catalogue</span>
+            <div class="post-toc-content">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#H5-pull-refresh-类的插件-组件统计"><span class="toc-text">H5 pull refresh 类的插件/组件统计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#普通的-scroll-插件"><span class="toc-text">普通的 scroll 插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iscroll"><span class="toc-text">iscroll</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用法"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iscroll-滚动核心"><span class="toc-text">iscroll 滚动核心</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mescroll"><span class="toc-text">mescroll</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用法-1"><span class="toc-text">用法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#better-scroll"><span class="toc-text">better-scroll</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#体验DEMO"><span class="toc-text">体验DEMO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用法-2"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#better-scroll其他资料"><span class="toc-text">better-scroll其他资料</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3种框架对比"><span class="toc-text">3种框架对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React-上拉加载组件"><span class="toc-text">React 上拉加载组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#react-infinite-scroller"><span class="toc-text">react-infinite-scroller</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#体验DEMO-1"><span class="toc-text">体验DEMO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用法-3"><span class="toc-text">用法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#支持React-Native的插件"><span class="toc-text">支持React Native的插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#react-native-pull-refresh"><span class="toc-text">react-native-pull-refresh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他上拉加载-和-下拉刷新解决方案"><span class="toc-text">其他上拉加载 和 下拉刷新解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+            </div>
+        </div>
+    
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">scrolls introduce</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Eric Yuan</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">June 3, 2019&nbsp;&nbsp;10:16:43</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <section class="post-content">
+            <h2 id="H5-pull-refresh-类的插件-组件统计"><a href="#H5-pull-refresh-类的插件-组件统计" class="headerlink" title="H5 pull refresh 类的插件/组件统计"></a>H5 pull refresh 类的插件/组件统计</h2><h3 id="普通的-scroll-插件"><a href="#普通的-scroll-插件" class="headerlink" title="普通的 scroll 插件"></a>普通的 scroll 插件</h3><blockquote>
+<p>iscroll <a href="https://github.com/cubiq/iscroll" target="_blank" rel="noopener">详细信息</a><br>mescroll <a href="http://www.mescroll.com/" target="_blank" rel="noopener">详细信息</a><br>better-scroll <a href="https://github.com/ustbhuangyi/better-scroll" target="_blank" rel="noopener">详细信息</a></p>
+</blockquote>
+<h3 id="iscroll"><a href="#iscroll" class="headerlink" title="iscroll"></a>iscroll</h3><p>iScroll是一个高性能，资源占用少，无依赖，多平台的javascript滚动插件。iScroll不仅仅是 滚动。它可以处理任何需要与用户进行移动交互的元素。在你的项目中包含仅仅4kb大小的iScroll，你的项目便拥有了滚动，缩放，平移，无限滚动，视差滚动，旋转功能。iScroll官方提供了5个不同的版本：</p>
+<ul>
+<li>iscroll.js 通用版 包含了大部分公共特性</li>
+<li>scroll-lite.js 缩减版 削减了一些功能特性，例如：滚动条，鼠标滚轮等等</li>
+<li><strong>iscroll-probe.js</strong> 复杂版 此版本可以满足你获取滚动条位置的需求</li>
+<li>iscroll-zoom.js 滚动缩放版</li>
+<li>iscroll-infinite.js 无限滚动版</li>
+</ul>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 初始化</span></span><br><span class="line"><span class="comment">* 也可以通过getElementById获得Dom再传进去，注意：Scroll使用的是querySelector 而不是 querySelectorAll</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> myScroll = <span class="keyword">new</span> IScroll(<span class="string">"#wrapper"</span>, &#123;</span><br><span class="line">    mouseWheel: <span class="literal">false</span>, <span class="comment">// 是否监听鼠标滚轮事件</span></span><br><span class="line">    interactiveScrollbars: <span class="literal">false</span>, <span class="comment">//用户是否可以拖动滚动条</span></span><br><span class="line">    scrollY: <span class="literal">true</span>, <span class="comment">//可以设置是否显示纵向滚动条</span></span><br><span class="line">    probeType: <span class="number">2</span>, <span class="comment">// iscroll-probe.js生效. 1滚动不繁忙的时候触发  2滚动每隔一定时间触发  3滚动一像素触发</span></span><br><span class="line">    bindToWrapper: <span class="literal">true</span> <span class="comment">//光标、触摸超出容器时，是否停止滚动</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 绑定事件 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">myScroll.on(<span class="string">"scroll"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.y &gt; <span class="number">60</span>) &#123; </span><br><span class="line">        <span class="comment">//下拉刷新操作  </span></span><br><span class="line">        isRefresh = <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.y &lt; (<span class="keyword">this</span>.maxScrollY - <span class="number">20</span>)) &#123; </span><br><span class="line">        <span class="comment">//上拉加载更多  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">myScroll.on(<span class="string">"scrollEnd"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isRefresh) &#123;</span><br><span class="line">        myScroll.refresh();</span><br><span class="line">        isRefresh = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="iscroll-滚动核心"><a href="#iscroll-滚动核心" class="headerlink" title="iscroll 滚动核心"></a>iscroll 滚动核心</h4><p><strong>options.useTransform</strong><br><strong>options.useTransition</strong><br><strong>options.HWCompositing</strong></p>
+<h3 id="mescroll"><a href="#mescroll" class="headerlink" title="mescroll"></a>mescroll</h3><h4 id="用法-1"><a href="#用法-1" class="headerlink" title="用法"></a>用法</h4><p>mescroll实现起来比较简单，通过简单的设置就能直接做出上拉加载下拉刷新的效果，通过如下代码实现：</p>
+<p><strong>第一步</strong> 引入css和js</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"../lib/mescroll/mescroll.js/dist/mescroll.min.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/mescroll/mescroll.js/dist/mescroll.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第二步</strong> 创建mescroll对象，并设置好参数与回调</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化mescroll</span></span><br><span class="line"><span class="keyword">var</span> mescroll = <span class="keyword">new</span> MeScroll(<span class="string">"scrollMain"</span>, &#123;</span><br><span class="line">    down: &#123;</span><br><span class="line">        <span class="literal">true</span>:<span class="literal">false</span> <span class="comment">//是否启用下拉</span></span><br><span class="line">    &#125;,</span><br><span class="line">    up: &#123;</span><br><span class="line">        auto: <span class="literal">false</span>,  <span class="comment">//初始化是是否调用回调</span></span><br><span class="line">        offset: <span class="number">80</span>, <span class="comment">//滑动到距离底部80px的时候触发</span></span><br><span class="line">        callback: upCallback, <span class="comment">//上拉加载的回调</span></span><br><span class="line">        htmlLoading: <span class="string">'&lt;p class="tips"&gt;加载中..&lt;/p&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="better-scroll"><a href="#better-scroll" class="headerlink" title="better-scroll"></a>better-scroll</h3><p>BetterScroll 是一款重点解决移动端各种滚动场景需求的开源插件，适用于滚动列表、选择器、轮播图、索引列表、开屏引导等应用场景。它的核心是借鉴的 iscroll 的实现，它的 API 设计基本兼容 iscroll，在 iscroll 的基础上又扩展了一些 feature 以及做了一些性能优化。<br>为了满足这些场景，它不仅支持惯性滚动、边界回弹、滚动条淡入淡出等效果的灵活配置，让滚动更加流畅，同时还提供了很多 API 方法和事件，以便我们更快地实现滚动场景下的需求，如下拉刷新、上拉加载。</p>
+<h4 id="体验DEMO"><a href="#体验DEMO" class="headerlink" title="体验DEMO"></a>体验DEMO</h4><p>尝试betterScroll的滚动 <a href="https://ustbhuangyi.github.io/better-scroll/#/examples/index-view" target="_blank" rel="noopener">详情地址</a></p>
+<h4 id="用法-2"><a href="#用法-2" class="headerlink" title="用法"></a>用法</h4><p><strong>一、下载betterScroll</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install @better-scroll/core@next --save</span><br><span class="line">npm install @better-scroll/pull-up@next</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">npm install better-scroll</span><br></pre></td></tr></table></figure>
+
+<p><strong>二、引入核心库，和上拉加载插件</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//按需引入</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/@better-scroll/core/dist/core.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/@better-scroll/pull-up/dist/pull-up.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">//或者全部引入，包含插件</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/better-scroll/dist/better-scroll.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>    </span><br><span class="line"></span><br><span class="line">//或者cdn引入,cdn引入是包含全插件的，better-scroll2.0会在window对象上挂在一个 BetterScroll </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/better-scroll@2.0.0-alpha.20/dist/better-scroll.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>三、引入核心库，和上拉加载插件</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BScroll.use(PullUp); <span class="comment">//使用插件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wrapper = <span class="built_in">document</span>.querySelector(<span class="string">'.wrapper'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bscrollObj = <span class="keyword">new</span> BScroll(wrapper, &#123;</span><br><span class="line">    scrollY: <span class="literal">true</span>,</span><br><span class="line">    pullUpLoad: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">bscrollObj.on(<span class="string">'pullingUp'</span>, callBack);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="better-scroll其他资料"><a href="#better-scroll其他资料" class="headerlink" title="better-scroll其他资料"></a>better-scroll其他资料</h4><p> <strong>API文档</strong> <a href="https://better-scroll.github.io/docs/zh-CN/" target="_blank" rel="noopener">https://better-scroll.github.io/docs/zh-CN/</a><br> <strong>betterScroll 的插件</strong> <a href="https://better-scroll.github.io/docs/zh-CN/plugins/" target="_blank" rel="noopener">https://better-scroll.github.io/docs/zh-CN/plugins/</a> </p>
+<h3 id="3种框架对比"><a href="#3种框架对比" class="headerlink" title="3种框架对比"></a>3种框架对比</h3><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">iscroll</th>
+<th align="center">mescroll</th>
+<th align="center">better-scroll</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">jquery依赖</td>
+<td align="center">无</td>
+<td align="center">无</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">css依赖</td>
+<td align="center">无</td>
+<td align="center">有</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">是否支持import</td>
+<td align="center">支持</td>
+<td align="center">支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">是否支持require</td>
+<td align="center">支持</td>
+<td align="center">支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">支持模块化</td>
+<td align="center">支持</td>
+<td align="center">支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">学习成本</td>
+<td align="center">高</td>
+<td align="center">低</td>
+<td align="center">低</td>
+</tr>
+<tr>
+<td align="center">github start数</td>
+<td align="center">12k</td>
+<td align="center">2.2k</td>
+<td align="center">10.8k</td>
+</tr>
+</tbody></table>
+<h2 id="React-上拉加载组件"><a href="#React-上拉加载组件" class="headerlink" title="React 上拉加载组件"></a>React 上拉加载组件</h2><blockquote>
+<p>react-infinite-scroller <a href="https://github.com/CassetteRocks/react-infinite-scroller" target="_blank" rel="noopener">详细信息</a></p>
+</blockquote>
+<h3 id="react-infinite-scroller"><a href="#react-infinite-scroller" class="headerlink" title="react-infinite-scroller"></a>react-infinite-scroller</h3><p>使用React组件无限加载内容。react-infinite-scroller是一个简单、轻量级的无限滚动包，它同时支持窗口和可滚动元素。</p>
+<h4 id="体验DEMO-1"><a href="#体验DEMO-1" class="headerlink" title="体验DEMO"></a>体验DEMO</h4><p>React组件无限加载 [详情地址] <a href="https://cassetterocks.github.io/react-infinite-scroller/demo/" target="_blank" rel="noopener">https://cassetterocks.github.io/react-infinite-scroller/demo/</a></p>
+<h4 id="用法-3"><a href="#用法-3" class="headerlink" title="用法"></a>用法</h4><p>安装并引入 react-infinite-scroller</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i react-infinite-scroller</span><br><span class="line"><span class="keyword">import</span> InfiniteScroll <span class="keyword">from</span> <span class="string">'react-infinite-scroller'</span></span><br></pre></td></tr></table></figure>
+
+<p>使用react-infinite-scroller</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&#123;&#123;<span class="attr">overflow</span>:<span class="string">"auto"</span>,<span class="attr">height</span>:<span class="string">"300px"</span>,<span class="attr">border</span>:<span class="string">"1px solid red"</span>&#125;&#125; &gt;</span><br><span class="line">    &lt;InfiniteScroll</span><br><span class="line">        initialLoad=&#123;<span class="literal">false</span>&#125;</span><br><span class="line">        loadMore=&#123; ()=&gt; <span class="keyword">this</span>.handleScroll() &#125;</span><br><span class="line">        hasMore=&#123;<span class="literal">true</span>&#125;</span><br><span class="line">        loader=&#123;&lt;div className=<span class="string">"loader"</span> key=&#123;<span class="number">0</span>&#125; style=&#123;&#123;<span class="attr">textAlign</span>:<span class="string">"center"</span>&#125;&#125; &gt;Loading ...&lt;<span class="regexp">/div&gt;&#125;</span></span><br><span class="line"><span class="regexp">        useWindow=&#123;false&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &#123;</span></span><br><span class="line"><span class="regexp">            this.state.accounts.map((item,key)=&gt;&#123;</span></span><br><span class="line"><span class="regexp">                return  &lt;div style=&#123;&#123;height:"50px",lineHeight:"50px",textAlign:"center"&#125;&#125; key=&#123;key&#125;&gt;&#123;item&#125;&lt;/</span>div&gt;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;<span class="regexp">/InfiniteScroll&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="支持React-Native的插件"><a href="#支持React-Native的插件" class="headerlink" title="支持React Native的插件"></a>支持React Native的插件</h2><blockquote>
+<p>react-native-pull-refresh  <a href="https://github.com/NadiKuts/react-native-pull-refresh" target="_blank" rel="noopener">详细信息</a></p>
+</blockquote>
+<h3 id="react-native-pull-refresh"><a href="#react-native-pull-refresh" class="headerlink" title="react-native-pull-refresh"></a>react-native-pull-refresh</h3><h2 id="其他上拉加载-和-下拉刷新解决方案"><a href="#其他上拉加载-和-下拉刷新解决方案" class="headerlink" title="其他上拉加载 和 下拉刷新解决方案"></a>其他上拉加载 和 下拉刷新解决方案</h2><ul>
+<li><strong>pulltorefresh</strong>： 专用于上拉加载的 <a href="https://github.com/BoxFactura/pulltorefresh.js" target="_blank" rel="noopener">https://github.com/BoxFactura/pulltorefresh.js</a></li>
+<li><strong>minirefresh</strong>： 类似于与mescroll的一个上拉加载下拉刷新库 <a href="https://github.com/minirefresh/minirefresh/" target="_blank" rel="noopener">https://github.com/minirefresh/minirefresh/</a></li>
+<li><strong>PhyTouch</strong>: 丝般顺滑的触摸运动方案 <a href="https://github.com/AlloyTeam/PhyTouch" target="_blank" rel="noopener">https://github.com/AlloyTeam/PhyTouch</a></li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><strong>iscroll5中文API 翻译</strong> <a href="https://www.kancloud.cn/kancloud/iscroll-api/77889" target="_blank" rel="noopener">https://www.kancloud.cn/kancloud/iscroll-api/77889</a></li>
+<li><strong>betterScroll详细介绍</strong> <a href="https://juejin.im/post/59b777015188257e764c716f" target="_blank" rel="noopener">https://juejin.im/post/59b777015188257e764c716f</a></li>
+</ul>
+
+        </section>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Eric Yuan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://eric7893835.github.io/2019/06/03/scroll-introduce/">https://eric7893835.github.io/2019/06/03/scroll-introduce/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Solgan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</strong></strong></span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/scroll/"># scroll</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+        </section>
+
+
+    </article>
+</div>
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Eric Yuan | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Sirice19/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+</html>
