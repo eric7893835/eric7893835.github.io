@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<title>js判断手机机型，是否在华为、iphone、小米、三星打开 | Eric&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Eric&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Eric&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div id="post-toc" class="post-toc">
+            <span class="post-toc-title">catalogue</span>
+            <div class="post-toc-content">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#判断打开目前的是什么手机品牌"><span class="toc-text">判断打开目前的是什么手机品牌</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#判断业务是否是-iphone、华为、小米、oppo、view、三星-打开"><span class="toc-text">判断业务是否是 iphone、华为、小米、oppo、view、三星 打开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断业务是否是-微信-打开"><span class="toc-text">判断业务是否是 微信 打开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断是在什么平台打开-pad-、pc-、mobile-phone"><span class="toc-text">判断是在什么平台打开 pad 、pc 、mobile phone</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+            </div>
+        </div>
+    
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">js判断手机机型，是否在华为、iphone、小米、三星打开</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Eric Yuan</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 9, 2019&nbsp;&nbsp;14:49:02</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <section class="post-content">
+            <h2 id="判断打开目前的是什么手机品牌"><a href="#判断打开目前的是什么手机品牌" class="headerlink" title="判断打开目前的是什么手机品牌"></a>判断打开目前的是什么手机品牌</h2><p>要在业务里知道是页面通过什么平台打开的，在前端使用userAgent来进行判断。以下正文涉及3类：主流的手机品牌判断方法、是否在微信打开、是否在PC或Pad打开。</p>
+<h3 id="判断业务是否是-iphone、华为、小米、oppo、view、三星-打开"><a href="#判断业务是否是-iphone、华为、小米、oppo、view、三星-打开" class="headerlink" title="判断业务是否是 iphone、华为、小米、oppo、view、三星 打开"></a>判断业务是否是 iphone、华为、小米、oppo、view、三星 打开</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">judgeBrand</span>(<span class="params">sUserAgent</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> isIphone = sUserAgent.match(<span class="regexp">/iphone/i</span>) == <span class="string">"iphone"</span>;</span><br><span class="line">    <span class="keyword">var</span> isHuawei = sUserAgent.match(<span class="regexp">/huawei/i</span>) == <span class="string">"huawei"</span>;</span><br><span class="line">    <span class="keyword">var</span> isHonor = sUserAgent.match(<span class="regexp">/honor/i</span>) == <span class="string">"honor"</span>;</span><br><span class="line">    <span class="keyword">var</span> isOppo = sUserAgent.match(<span class="regexp">/oppo/i</span>) == <span class="string">"oppo"</span>;</span><br><span class="line">    <span class="keyword">var</span> isOppoR15 = sUserAgent.match(<span class="regexp">/pacm00/i</span>) == <span class="string">"pacm00"</span>;</span><br><span class="line">    <span class="keyword">var</span> isVivo = sUserAgent.match(<span class="regexp">/vivo/i</span>) == <span class="string">"vivo"</span>;</span><br><span class="line">    <span class="keyword">var</span> isXiaomi = sUserAgent.match(<span class="regexp">/mi\s/i</span>) == <span class="string">"mi "</span>;</span><br><span class="line">    <span class="keyword">var</span> isXiaomi2s = sUserAgent.match(<span class="regexp">/mix\s/i</span>) == <span class="string">"mix "</span>;</span><br><span class="line">    <span class="keyword">var</span> isRedmi = sUserAgent.match(<span class="regexp">/redmi/i</span>) == <span class="string">"redmi"</span>;</span><br><span class="line">    <span class="keyword">var</span> isSamsung = sUserAgent.match(<span class="regexp">/sm-/i</span>) == <span class="string">"sm-"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isIphone) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'iphone'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isHuawei || isHonor) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'huawei'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isOppo || isOppoR15) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'oppo'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isVivo) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'vivo'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isXiaomi || isRedmi || isXiaomi2s) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'xiaomi'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isSamsung) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'samsung'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'default'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> brand = judgeBrand(navigator.userAgent.toLowerCase());</span><br></pre></td></tr></table></figure>
+
+<p><strong>小米</strong>手机判断比较特殊，小米普通机型拿到的ua都类似于<code>MI 6 Build</code>、<code>Mi Note 2 Build</code>这样的，所以要匹配<code>mi\s</code>,空格必须加上。如果只匹配<code>mi</code>的话，用户通过小米浏览器或者其他有带有mi字符的都会认为是小米手机，例如：<code>Microsoft</code></p>
+<p><strong>三星</strong>手机的品牌判断要使用<code>sm-</code>，因为三星机型都是<code>SM-J3109</code>、<code>SM-G9650 Build</code>、<code>SM-N9500 Build</code>这样的。如果只匹配<code>sm</code>，就会匹配到某些版本锤子手机。</p>
+<p>以下网站收集了市面目前主流品牌的userAgent,各品牌的各机型的<code>userAgent</code>在里面能找到</p>
+<blockquote>
+<p>手机品牌userAgent库 <a href="http://www.fynas.com/ua" target="_blank" rel="noopener">http://www.fynas.com/ua</a></p>
+</blockquote>
+<h3 id="判断业务是否是-微信-打开"><a href="#判断业务是否是-微信-打开" class="headerlink" title="判断业务是否是 微信 打开"></a>判断业务是否是 微信 打开</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isWeChat</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ua = navigator.userAgent.toLowerCase();</span><br><span class="line">    <span class="keyword">return</span> (<span class="regexp">/micromessenger/</span>.test(ua)) ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="判断是在什么平台打开-pad-、pc-、mobile-phone"><a href="#判断是在什么平台打开-pad-、pc-、mobile-phone" class="headerlink" title="判断是在什么平台打开 pad 、pc 、mobile phone"></a>判断是在什么平台打开 pad 、pc 、mobile phone</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkAgent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sUserAgent = navigator.userAgent.toLowerCase();</span><br><span class="line">    <span class="keyword">var</span> bIsIpad = sUserAgent.match(<span class="regexp">/ipad/i</span>) == <span class="string">"ipad"</span>;</span><br><span class="line">    <span class="keyword">var</span> bIsIphoneOs = sUserAgent.match(<span class="regexp">/iphone os/i</span>) == <span class="string">"iphone os"</span>;</span><br><span class="line">    <span class="keyword">var</span> bIsMidp = sUserAgent.match(<span class="regexp">/midp/i</span>) == <span class="string">"midp"</span>;</span><br><span class="line">    <span class="keyword">var</span> bIsUc7 = sUserAgent.match(<span class="regexp">/rv:1.2.3.4/i</span>) == <span class="string">"rv:1.2.3.4"</span>;</span><br><span class="line">    <span class="keyword">var</span> bIsUc = sUserAgent.match(<span class="regexp">/ucweb/i</span>) == <span class="string">"ucweb"</span>;</span><br><span class="line">    <span class="keyword">var</span> bIsAndroid = sUserAgent.match(<span class="regexp">/android/i</span>) == <span class="string">"android"</span>;</span><br><span class="line">    <span class="keyword">var</span> bIsCE = sUserAgent.match(<span class="regexp">/windows ce/i</span>) == <span class="string">"windows ce"</span>;</span><br><span class="line">    <span class="keyword">var</span> bIsWM = sUserAgent.match(<span class="regexp">/windows mobile/i</span>) == <span class="string">"windows mobile"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!(bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM || bIsIpad)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'pc'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(bIsIpad)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'pad'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'phone'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><strong>手机品牌userAgent库</strong> <a href="http://www.fynas.com/ua" target="_blank" rel="noopener">http://www.fynas.com/ua</a></li>
+</ul>
+
+        </section>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Eric Yuan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://eric7893835.github.io/2019/08/09/brand_judgment/">https://eric7893835.github.io/2019/08/09/brand_judgment/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Solgan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</strong></strong></span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/javascript/"># javascript</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/08/09/Iview_table/">iview框架table 跨页多选实现</a>
+            
+            
+            <a class="next" rel="next" href="/2019/06/03/scroll-introduce/">scrolls introduce</a>
+            
+        </section>
+
+
+    </article>
+</div>
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Eric Yuan | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Sirice19/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+</html>
