@@ -120,7 +120,7 @@
 <h3 id="二-http协议"><a href="#二-http协议" class="headerlink" title="二.http协议"></a>二.http协议</h3><h4 id="1-http协议"><a href="#1-http协议" class="headerlink" title="1.http协议"></a>1.http协议</h4><p>HTTP 全称是 <code>HyperText Transfer Protocal</code> ，即：超文本传输协议，从 90 年代开始就在 WWW 上广泛应用，是现今在 WWW 上应用最多的协议，HTTP 是应用层协议，当你上网浏览网页的时候，浏览器和 web 服务器之间就会通过 HTTP 在 Internet 上进行数据的发送和接收。HTTP 是一个基于请求/响应模式的、无状态的协议。即我们通常所说的 Request/Response</p>
 <h4 id="2-http历史版本"><a href="#2-http历史版本" class="headerlink" title="2.http历史版本"></a>2.http历史版本</h4><p>最初的HTTP诞生CERN（欧洲核子研究组织）的蒂姆 • 伯纳斯 - 李（Tim BernersLee）博士提出了一种能让远隔两地的研究者们共享知识的设想。最初设想的基本理念是：借助多文档之间相互关联形成的超文本（HyperText），连成可相互参阅的 WWW（World Wide Web，万维网）。<br><img src="http://eric.ac.cn/imgs/http_history_version.png" alt="HTTP历史版本" title="HTTP历史版本"><br><strong>http0.9</strong><br>0.9协议是适用于各种数据信息的简洁快速协议，但是远不能满足日益发展的各种应用的需要。0.9协议就是一个交换信息的无序协议，仅仅限于文字。由于无法进行内容的协商，在双发的握手和协议中，并有规定双发的内容是什么，也就是图片是无法显示和处理的。<br><strong>http1.0</strong><br>到了1.0协议阶段，也就是在1982年，TimBerners-Lee提出了HTTP/1.0。在此后的不断丰富和发展中，HTTP/1.0成为最重要的面向事务的应用层协议。该协议对每一次请求/响应建立并拆除一次连接。其特点是简单、易于管理，所以它符合了大家的需要，得到了广泛的应用。<br><strong>http1.1</strong><br>在1.0协议中，双方规定了连接方式和连接类型，这已经极大扩展了HTTP的领域，但对于互联网最重要的速度和效率，并没有太多的考虑。毕竟，作为协议的制定者，当时也没有想到HTTP协议会有那么快的普及速度。<br><strong>http2.0</strong><br>HTTP2.0的前世是HTTP1.0和HTTP1.1。虽然之前仅仅只有两个版本，但这两个版本所包含的协议规范之庞大，足以让任何一个有经验的工程师为之头疼。网络协议新版本并不会马上取代旧版本,这是由于网络基础设施更新缓慢所决定的。 </p>
 <h4 id="3-http交互流程"><a href="#3-http交互流程" class="headerlink" title="3.http交互流程"></a>3.http交互流程</h4><p><strong>http交互流程</strong><br><img src="http://eric.ac.cn/imgs/http_dns.png" alt="htpp交互流程" title="htpp交互流程"><br>从上图可以知道，当客户端访问Web站点时，首先会通过DNS服务查询到域名的IP地址。然后浏览器生成HTTP请求，并通过TCP/IP协议发送给Web服务器。Web服务器接收到请求后会根据请求生成响应内容，并通过TCP/IP协议返回给客户端。<br><strong>DNS</strong>服务是通过DNS协议进行通信的，而DNS协议跟HTTP协议一样也是应用层协议。HTTP传输层是用的TCP，DNS传输层使用的UDP。<br><strong>OSI七层参考模型</strong><br>七层模型，亦称OSI（Open System Interconnection）。参考模型是国际标准化组织（ISO）制定的一个用于计算机或通信系统间互联的标准体系，一般称为OSI参考模型或七层模型<br><img src="http://eric.ac.cn/imgs/osi_tcpip.png" alt="OSI参考模型" title="OSI参考模型"><br><strong>TCP/IP四层模型</strong><br><img src="http://eric.ac.cn/imgs/http_tier.png" alt="TCP/IP分层图" title="IP分层图"><br><strong>TCP三次握手</strong><br>从上面的介绍可知，传输层协议有：TCP协议、UDP协议和SCTP。TCP协议相对于其他两个协议的特点是：TCP协议提供面向连接、字节流和可靠的传输。<br>使用TCP协议进行通信的双方必须先建立连接，然后才能开始传输数据。所谓三次握手（Three-Way Handshake）即建立TCP连接，就是指建立一个TCP连接时，需要客户端和服务端总共发送3个包以确认连接的建立。<br><img src="http://eric.ac.cn/imgs/syn_cookie.png" alt="三次握手" title="三次握手"></p>
-<p><strong>第一次握手</strong>：Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。<br><strong>第二次握手</strong>：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。<br><strong>第三次握手</strong>：Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给Server，Server检查ack是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。</p>
+<p><strong>第一次握手</strong>：Client将标志位SYN置为1，随机产生一个值seq=x，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。<br><strong>第二次握手</strong>：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=x+1，随机产生一个值seq=y，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。<br><strong>第三次握手</strong>：Client收到确认后，检查ack是否为x+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=y+1，并将该数据包发送给Server，Server检查ack是否为y+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。</p>
 <h3 id="三-http的request对象和"><a href="#三-http的request对象和" class="headerlink" title="三.http的request对象和"></a>三.http的request对象和</h3><h4 id="1-http请求-request"><a href="#1-http请求-request" class="headerlink" title="1.http请求(request)"></a>1.http请求(request)</h4><p>HTTP 的请求报文分为三个部分：<strong>请求行</strong>、<strong>请求头</strong>、<strong>请求体</strong></p>
 <h5 id="1-1-请求行"><a href="#1-1-请求行" class="headerlink" title="1.1 请求行"></a>1.1 请求行</h5><p><strong>请求行</strong>（<code>Request line</code>）分为三个部分：请求方法、请求地址和协议版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /testHttp?name=Test HTTP/1.1</span><br></pre></td></tr></table></figure>
@@ -166,7 +166,7 @@
 <td align="left">HTTP/1.1 中预留给能够将连接改为通道方式的代理服务器。通常用于 SSL 加密服务器的链接（经由非加密的 HTTP 代理服务器）</td>
 </tr>
 </tbody></table>
-<p>其中，最常见的是 GET 和 POST 方法，如果是 RESful 接口的话一般会用到 PUT、DELETE、GET、POST（分别对应增删查改）</p>
+<p>其中，最常见的是 GET 和 POST 方法，如果是 RESful 接口的话一般会用到 PUT、DELETE、POST、GET（分别对应增删改查）</p>
 <h5 id="1-2-请求头"><a href="#1-2-请求头" class="headerlink" title="1.2 请求头"></a>1.2 请求头</h5><p>请求头可用于传递一些附加信息，格式为：<code>键: 值</code>，注意冒号后面有一个空格:<br><img src="http://eric.ac.cn/imgs/req1.png" alt="请求头" title="请求头"><br><strong>请求和响应常见通用的 Header</strong></p>
 <table>
 <thead>
@@ -177,7 +177,7 @@
 </thead>
 <tbody><tr>
 <td align="center">Content-Type</td>
-<td align="left">向指定的资源发出“显示”请求，使用 GET 方法应该只用在读取数据上，而不应该用于产生“副作用”的操作中</td>
+<td align="left">向指定的资源发出“显示”请求</td>
 </tr>
 <tr>
 <td align="center">Accept</td>
@@ -197,7 +197,7 @@
 </tr>
 <tr>
 <td align="center">ETag</td>
-<td align="left">给当前资源的标识，和<code>Last-Modified</code>、<code>If-None-Match</code>、<code>If-Modified-Since</code>配合，用于缓存控制</td>
+<td align="left">给当前资源的标识，和<code>If-None-Match</code>配合，用于缓存控制</td>
 </tr>
 <tr>
 <td align="center">Cache-Control</td>
@@ -218,11 +218,11 @@
 </tr>
 <tr>
 <td align="center">If-Modified-Since</td>
-<td align="left">值为上一次服务器返回的Last-Modified值，用于确定某个资源是否被更改过，没有更改过就从缓存中读取</td>
+<td align="left">值为上一次服务器返回的<code>Last-Modified</code>值，用于确定某个资源是否被更改过，没有更改过就从缓存中读取</td>
 </tr>
 <tr>
 <td align="center">If-None-Match</td>
-<td align="left">值为上一次服务器返回的 ETag 值，一般会和If-Modified-Since</td>
+<td align="left">值为上一次服务器返回的 <code>ETag</code>值</td>
 </tr>
 <tr>
 <td align="center">Cookie</td>
@@ -240,7 +240,7 @@
 <h5 id="1-3-请求体"><a href="#1-3-请求体" class="headerlink" title="1.3 请求体"></a>1.3 请求体</h5><p><strong>请求体</strong>（又叫请求正文）是 post 请求方式中的请求参数,会把数据以key value形式发送请求</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=test&amp;type=01</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-http响应-response"><a href="#2-http响应-response" class="headerlink" title="2.http响应(response)"></a>2.http响应(response)</h4><p>HTTP 响应的格式上除状态行（第一行）与请求报文的请求行不一样之外，其它的就<strong>格式</strong>而言是一样的</p>
+<h4 id="2-http响应-response"><a href="#2-http响应-response" class="headerlink" title="2.http响应(response)"></a>2.http响应(response)</h4><p>HTTP 响应的格式上除状态行（第一行）与请求报文的请求行不一样之外，其它的就<strong>格式</strong>而言是一样的，包含状态行、响应头、响应体</p>
 <h5 id="2-1-状态行"><a href="#2-1-状态行" class="headerlink" title="2.1 状态行"></a>2.1 状态行</h5><p><strong>状态行</strong>包括协议、状态码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br></pre></td></tr></table></figure>
 
@@ -266,15 +266,15 @@
 <td align="left">取值一般为 chunked，出现在 Content-Length 不能确定的情况下，表示服务器不知道响应板体的数据大小，一般同时出现Content-Encoding响应头</td>
 </tr>
 <tr>
-<td align="center">Location</td>
-<td align="left">重定向到另一个 URL，如输入浏览器就输入 baidu.com 回车，会自动跳转到<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 就是通过这个响应头控制的</td>
+<td align="center">Cookie</td>
+<td align="left">已有的Cookie</td>
 </tr>
 <tr>
-<td align="center">Server</td>
-<td align="left">后台服务器</td>
+<td align="center">Content-Length</td>
+<td align="left">响应的字符长度</td>
 </tr>
 </tbody></table>
-<h5 id="2-3-响应体"><a href="#2-3-响应体" class="headerlink" title="2.3 响应体"></a>2.3 响应体</h5><p><strong>响应体</strong>也就是网页的正文内容，一般在响应头中会用 Content-Length 来明确响应体的长度，便于浏览器接收，对于大数据量的正文信息，也会使用 chunked 的编码方式。</p>
+<h5 id="2-3-响应体"><a href="#2-3-响应体" class="headerlink" title="2.3 响应体"></a>2.3 响应体</h5><p><strong>响应体</strong>也就是网页的正文内容，一般在响应头中会用 Content-Length 来明确响应体的长度。</p>
 <h3 id="四-http缓存"><a href="#四-http缓存" class="headerlink" title="四.http缓存"></a>四.http缓存</h3><h4 id="1-缓存的规则"><a href="#1-缓存的规则" class="headerlink" title="1.缓存的规则"></a>1.缓存的规则</h4><p>HTTP的缓存属于客户端缓存,所以我们认为浏览器存在一个缓存数据库，用于储存一些不经常变化的静态文件（图片、css、js等）。Http缓存可以分为两大类，<code>强制缓存</code>（也称强缓存）和<code>协商缓存</code>。两类缓存规则不同，强制缓存在缓存数据未失效的情况下，不需要再和服务器发生交互；而协商缓存，顾名思义，需要进行比较判断是否可以使用缓存。</p>
 <h4 id="2-强制缓存"><a href="#2-强制缓存" class="headerlink" title="2.强制缓存"></a>2.强制缓存</h4><p>当缓存数据库中已有所请求的数据时。客户端直接从缓存数据库中获取数据。当缓存数据库中没有所请求的数据时，客户端的才会从服务端获取数据。<br><img src="http://eric.ac.cn/imgs/qz1.png" alt="强制缓存" title="强制缓存"><br>强制缓存分为两种情况，<code>Expires</code>和<code>Cache-Control</code></p>
 <p><strong>Expires</strong><br>Exprires的值为服务端返回的数据到期时间。当再次请求时的请求时间小于返回的此时间，则直接使用缓存数据。但由于服务端时间和客户端时间可能有误差，这也将导致缓存命中的误差，另一方面，Expires是HTTP1.0的产物，故现在大多数使用Cache-Control替代。</p>
@@ -282,12 +282,13 @@
 <ul>
 <li>private：客户端可以缓存</li>
 <li>public：客户端和代理服务器都可以缓存</li>
-<li>max-age=xx：缓存内容将在xx毫秒后失效</li>
+<li>max-age=xx：缓存内容将在xx秒后失效</li>
 <li>no-cache：需要使用协商缓存来验证缓存数据</li>
 <li>no-store：所有内容都不会缓存。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.setHeader(<span class="string">'Cache-Control'</span>, <span class="string">'public,max-age=120'</span>)</span><br></pre></td></tr></table></figure>
 
+<p>当<code>Expires</code>和<code>Cache-Control</code>都存在时，<code>Cache-Control</code>会覆盖<code>Expires</code></p>
 <h4 id="3-协商缓存"><a href="#3-协商缓存" class="headerlink" title="3.协商缓存"></a>3.协商缓存</h4><p>协商缓存需要根据时间来判断缓存是否过期。浏览器第一次请求数据时，服务器会将缓存标识与数据一起响应给客户端，客户端将它们备份至缓存中。再次请求时，客户端会将缓存中的标识发送给服务器，服务器根据此标识判断。若未失效，返回304状态码，浏览器拿到此状态码就可以直接使用缓存数据了。<br><img src="http://eric.ac.cn/imgs/xs1.png" alt="协商缓存" title="协商缓存"><br>对于协商缓存来说，缓存标识我们需要着重理解一下，下面介绍它的两种缓存方案。</p>
 <p><strong>Last-Modified</strong><br><code>Last-Modified</code>：<br>服务器在响应请求时，会告诉浏览器资源的最后修改时间。</p>
 <p><code>if-Modified-Since</code>:<br>浏览器再次请求服务器的时候，请求头会包含此字段，后面跟着在缓存中获得的最后修改时间。服务端收到此请求头发现有if-Modified-Since，则与被请求资源的最后修改时间进行对比，如果一致则返回304和响应报文头，浏览器只需要从缓存中获取信息即可。</p>
